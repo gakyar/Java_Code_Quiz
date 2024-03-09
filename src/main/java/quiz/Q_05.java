@@ -1,7 +1,9 @@
 package quiz;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Q_05 {
 
@@ -10,14 +12,14 @@ public class Q_05 {
 
 
     public static void main(String[] args) {
-        String word = "can";
+        String word = "java";
 
         System.out.println(findAllPermutation(word));
     }
 
-    public static List<String> findAllPermutation(String str) {
+    public static Set<String> findAllPermutation(String str) {
 
-        List<String> permutations = new ArrayList<>();
+        Set<String> permutations = new HashSet<>();
         if (str == null || str.isEmpty()) {
             permutations.add("");
         }
@@ -25,7 +27,7 @@ public class Q_05 {
         for (int i = 0; i < str.length(); i++) {
             char c = str.charAt(i);
             String remainingChars = str.substring(0, i) + str.substring(i + 1);
-            List<String> subPermutation = findAllPermutation(remainingChars);
+            Set<String> subPermutation = (Set<String>) findAllPermutation(remainingChars);
             for (String w : subPermutation) {
                 permutations.add(c + w);
             }
